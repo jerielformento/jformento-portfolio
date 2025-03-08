@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import { XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
@@ -18,6 +19,7 @@ import {
   BLOG_POSTS,
   EMAIL,
   SOCIAL_LINKS,
+  TECH_STACKS,
 } from './data'
 
 const VARIANTS_CONTAINER = {
@@ -39,11 +41,13 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-type ProjectVideoProps = {
-  src: string
+type ProjectImageProps = {
+  src: string,
+  height: number,
+  width: number,
 }
 
-function ProjectVideo({ src }: ProjectVideoProps) {
+function ProjectImage({ src, height, width }: ProjectImageProps) {
   return (
     <MorphingDialog
       transition={{
@@ -53,22 +57,23 @@ function ProjectVideo({ src }: ProjectVideoProps) {
       }}
     >
       <MorphingDialogTrigger>
-        <video
+        <Image
           src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
+          alt="image"
+          height={height}
+          width={width}
+          
+          className="w-full cursor-zoom-in rounded-xl"
         />
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
+        <MorphingDialogContent className="relative rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+          <Image
             src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+            alt="image"
+            height={1200}
+            width={1200}
+            className="h-[50vh] w-full rounded-xl md:h-[70vh]"
           />
         </MorphingDialogContent>
         <MorphingDialogClose
@@ -123,6 +128,22 @@ function MagneticSocialLink({
   )
 }
 
+function MagneticTechStack({
+  children
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+      <div
+        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+      >
+        {children}
+      </div>
+    </Magnetic>
+  )
+}
+
 export default function Personal() {
   return (
     <motion.main
@@ -137,9 +158,22 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+          Full stack web developer with 11 years of experience in building and optimizing web applications. Proficient in front-end and back-end technologies, focused on delivering responsive and high-performance solutions. Eager to contribute to innovative projects in a collaborative environment.
           </p>
+        </div>
+      </motion.section>
+
+      <h3 className="mb-5 text-lg font-medium">Tech Stacks</h3>
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <div className="flex flex-wrap items-center justify-start space-x-3 space-y-2">
+          {TECH_STACKS.map((link) => (
+            <MagneticTechStack key={link.name}>
+              {link.name}
+            </MagneticTechStack>
+          ))}
         </div>
       </motion.section>
 
@@ -152,7 +186,7 @@ export default function Personal() {
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
+                <ProjectImage src={project.video}  height={500} width={500} />
               </div>
               <div className="px-1">
                 <a
@@ -199,6 +233,7 @@ export default function Personal() {
                     <p className="text-zinc-500 dark:text-zinc-400">
                       {job.company}
                     </p>
+                    <br/>
                   </div>
                   <p className="text-zinc-600 dark:text-zinc-400">
                     {job.start} - {job.end}
@@ -210,7 +245,7 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -244,7 +279,7 @@ export default function Personal() {
             ))}
           </AnimatedBackground>
         </div>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section
         variants={VARIANTS_SECTION}
