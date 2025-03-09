@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
     name: 'Access Online Australia',
     description:
       'An e-commerce website specialising in access equipment for hire and for sale with a full product solution including servicing, training, and transport.',
-    link: 'https://pro.motion-primitives.com/',
+    link: '#',
     video:
       '/projects/accessonline.png',
     id: 'project1',
@@ -73,15 +73,15 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Full-Stack Developer',
     start: 'Jan 2024',
     end: 'Present',
-    link: 'https://ibelick.com',
+    link: '#',
     id: 'work1',
   },
   {
-    company: 'Ebidmo (Freelance)',
+    company: 'Ebidmo (Contract)',
     title: 'Full-Stack Developer',
     start: 'Sept 2023',
     end: 'Dec 2023',
-    link: 'https://ibelick.com',
+    link: '#',
     id: 'work2',
   },
   {
@@ -89,7 +89,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Lead Web Developer',
     start: 'Jul 2021',
     end: 'Aug 2023',
-    link: 'https://ibelick.com',
+    link: '#',
     id: 'work3',
   },
   {
@@ -97,7 +97,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Senior Web Developer',
     start: 'Apr 2013',
     end: 'Jun 2021',
-    link: 'https://ibelick.com',
+    link: '#',
     id: 'work4',
   },
 ]
